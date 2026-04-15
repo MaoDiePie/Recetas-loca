@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FREAKBITES 🍔✨</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:#0f0f1a;
+  color:white;
+}
+header{
+  background:linear-gradient(90deg,#ff00cc,#3333ff);
+  padding:15px;
+  text-align:center;
+  font-size:24px;
+  font-weight:bold;
+}
+nav{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  padding:10px;
+}
+nav a{
+  color:white;
+  text-decoration:none;
+}
+.section{
+  padding:40px;
+}
+.hero{
+  text-align:center;
+}
+.slider{
+  display:flex;
+  overflow-x:auto;
+  gap:20px;
+}
+.card{
+  min-width:250px;
+  background:#1e1e2f;
+  border-radius:15px;
+  padding:15px;
+  transition:0.3s;
+}
+.card:hover{
+  transform:scale(1.05);
+}
+button{
+  background:#ff00cc;
+  border:none;
+  padding:10px 15px;
+  color:white;
+  border-radius:10px;
+  cursor:pointer;
+}
+input{
+  padding:10px;
+  margin:5px;
+  border-radius:8px;
+  border:none;
+}
+.shop-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+</style>
+</head>
+<body>
+
+<header class="animate__animated animate__fadeInDown">FREAKBITES 🔥</header>
+
+<nav>
+<a href="#home">Inicio</a>
+<a href="#recipes">Recetas</a>
+<a href="#shop">Tienda</a>
+<a href="#login">Cuenta</a>
+</nav>
+
+<section id="home" class="section hero">
+<h1 class="animate__animated animate__zoomIn">Comida fuera de lo normal 😈</h1>
+<p>Recetas raras, sabores locos y estética brutal</p>
+
+<div class="slider">
+<div class="card">🍕 Pizza arcoíris explosiva</div>
+<div class="card">🍔 Burger negra con oro</div>
+<div class="card">🍜 Ramen dulce con chocolate</div>
+</div>
+
+<h2>Nosotros</h2>
+<p>Somos una comunidad que rompe reglas culinarias. Aquí no cocinas... creas experiencias.</p>
+</section>
+
+<section id="recipes" class="section">
+<h2>🔥 Recetas Trending</h2>
+
+<div class="card">
+<h3>Pizza volcán 🌋</h3>
+<p><b>Ingredientes:</b> queso, salsa, masa, chile</p>
+<p><b>Pasos:</b> mezcla todo, hornea, explota sabores</p>
+<button onclick="saveRecipe('Pizza volcán')">Guardar</button>
+<button onclick="favoriteRecipe('Pizza volcán')">❤️ Favorito</button>
+<button onclick="shareRecipe('Pizza volcán')">Compartir</button>
+</div>
+
+<div class="card">
+<h3>Helado picante 🍦🔥</h3>
+<p><b>Ingredientes:</b> leche, azúcar, chile</p>
+<p><b>Pasos:</b> mezcla, congela, sorpréndete</p>
+<button onclick="saveRecipe('Helado picante')">Guardar</button>
+<button onclick="favoriteRecipe('Helado picante')">❤️ Favorito</button>
+<button onclick="shareRecipe('Helado picante')">Compartir</button>
+</div>
+
+</section>
+
+<section id="login" class="section">
+<h2>Cuenta</h2>
+<input type="text" id="user" placeholder="Usuario">
+<input type="password" id="pass" placeholder="Contraseña">
+<button onclick="login()">Registrarse / Login</button>
+<p id="status"></p>
+</section>
+
+<section id="shop" class="section">
+<h2>🛒 Tienda</h2>
+<div class="shop-grid">
+<div class="card">
+<h3>Playera FreakBites</h3>
+<button onclick="addCart('Playera')">Agregar</button>
+</div>
+<div class="card">
+<h3>Taza creativa</h3>
+<button onclick="addCart('Taza')">Agregar</button>
+</div>
+<div class="card">
+<h3>Ingrediente secreto</h3>
+<button onclick="addCart('Ingrediente')">Agregar</button>
+</div>
+</div>
+
+<h3>Carrito</h3>
+<ul id="cart"></ul>
+</section>
+
+<script>
+let cart=[];
+
+function saveRecipe(name){
+  alert(name + ' guardada 🔖');
+}
+
+function favoriteRecipe(name){
+  alert(name + ' añadida a favoritos ❤️');
+}
+
+function shareRecipe(name){
+  alert('Compartiendo ' + name + ' 🚀');
+}
+
+function login(){
+  let user=document.getElementById('user').value;
+  document.getElementById('status').innerText="Bienvenido "+user+" 🎉";
+}
+
+function addCart(item){
+  cart.push(item);
+  renderCart();
+}
+
+function renderCart(){
+  let list=document.getElementById('cart');
+  list.innerHTML="";
+  cart.forEach(i=>{
+    let li=document.createElement('li');
+    li.innerText=i;
+    list.appendChild(li);
+  });
+}
+</script>
+
+</body>
+</html>
